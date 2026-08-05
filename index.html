@@ -4,420 +4,58 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Rocco's Italian Kitchen — Google Search Ads Performance Review</title>
+<title>Rocco&#x27;s Italian Kitchen — Performance Reports</title>
 <style>
-  :root {
-    --navy: #001f52;
-    --navy-deep: #000a1f;
-    --heading-navy: #0a2540;
-    --brand-blue: #1B51A4;
-    --accent-blue: #3B82F6;
-    --accent-cyan: #06B6D4;
-    --sky: #38bdf8;
-    --yellow: #F9E11C;
-
-    --text-primary: #0a1628;
-    --text-body: #3b4563;
-    --text-muted: #6b7a99;
-    --text-subtle: #8b95ad;
-
-    --surface: #ffffff;
-    --surface-raised: #f8f9fc;
-    --surface-cool: #f0f3fa;
-
-    --border: #e2e8f0;
-    --border-subtle: #eef2f7;
-
-    --good: #2e7d32;
-    --warn: #b45309;
-
-    --font-head: "Helvetica Neue", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
-    --font-body: "Inter", "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif;
-
-    color-scheme: light;
-  }
-
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-
-  body {
-    margin: 0;
-    background: #e9edf4;
-    font-family: var(--font-body);
-    color: var(--text-body);
-    line-height: 1.6;
-    font-size: 15px;
-    -webkit-font-smoothing: antialiased;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .page {
-    max-width: 850px;
-    margin: 32px auto;
-    background: var(--surface);
-    box-shadow: 0 20px 60px rgba(0, 10, 31, 0.18);
-    overflow: hidden;
-  }
-
-  /* ---------- Header ---------- */
-  .masthead {
-    position: relative;
-    padding: 40px 48px 44px;
-    background: linear-gradient(165deg, #020817 0%, #001131 35%, #001f52 68%, #0c2d6b 100%);
-    color: #fff;
-    overflow: hidden;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-  .masthead::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size: 46px 46px;
-    opacity: 0.5;
-    pointer-events: none;
-  }
-  .glow { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; }
-  .glow.a { width: 420px; height: 420px; top: -160px; right: -80px;
-    background: radial-gradient(circle, rgba(59,130,246,0.35) 0%, transparent 70%); }
-  .glow.b { width: 320px; height: 320px; bottom: -160px; left: 60px;
-    background: radial-gradient(circle, rgba(6,182,212,0.22) 0%, transparent 70%); }
-
-  /* :not(.glow) so this does not override .glow's absolute positioning — both
-     selectors carry one class, so source order alone decided it and the orbs
-     fell into flow, adding ~740px of empty band above the logo. */
-  .masthead > *:not(.glow) { position: relative; z-index: 1; }
-
-  .brandrow { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
-  .logochip {
-    background: #fff;
-    border-radius: 14px;
-    padding: 12px 16px;
-    box-shadow: 0 8px 24px rgba(0, 10, 31, 0.28);
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-  .logochip img { display: block; height: 60px; width: auto; }
-  .preparedby { text-align: right; line-height: 1.4; }
-  .preparedby .lbl {
-    font-size: 10px; font-weight: 600; letter-spacing: 1.4px;
-    text-transform: uppercase; color: #7ba3d4;
-  }
-  .preparedby .cw {
-    font-family: var(--font-head); font-weight: 900; font-size: 18px;
-    letter-spacing: -0.4px; color: #fff;
-  }
-  .preparedby .cw span { color: var(--yellow); }
-
-  .eyebrow {
-    font-size: 11px; font-weight: 700; letter-spacing: 1.6px;
-    text-transform: uppercase; color: var(--sky); margin: 0 0 12px;
-  }
-  h1 {
-    font-family: var(--font-head); font-weight: 900; font-size: 2.4rem;
-    line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 14px;
-    color: #fff; text-wrap: balance; max-width: 15ch;
-  }
-  .meta {
-    display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 22px;
-    font-size: 13px; color: #b4c6e0;
-  }
-  .meta b { color: #fff; font-weight: 600; }
-
-  /* ---------- Body sections ---------- */
-  section { padding: 40px 48px; }
-  section + section { border-top: 1px solid var(--border-subtle); }
-
-  .sec-label {
-    font-size: 11px; font-weight: 700; letter-spacing: 1.6px;
-    text-transform: uppercase; color: var(--brand-blue); margin: 0 0 6px;
-  }
-  h2 {
-    font-family: var(--font-head); font-weight: 800; font-size: 1.55rem;
-    line-height: 1.2; color: var(--heading-navy); margin: 0 0 20px; letter-spacing: -0.01em;
-  }
-  p { margin: 0 0 14px; max-width: 68ch; }
-  p:last-child { margin-bottom: 0; }
-
-  /* ---------- KPI grid ---------- */
-  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .kpi {
-    border: 1px solid var(--border); border-radius: 16px; padding: 18px 18px 16px;
-    background: linear-gradient(180deg, #ffffff 0%, var(--surface-raised) 100%);
-    position: relative; break-inside: avoid;
-  }
-  .kpi .cap {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.4px;
-    text-transform: uppercase; color: var(--text-subtle); margin-bottom: 8px;
-  }
-  .kpi .val {
-    font-family: var(--font-head); font-weight: 800; font-size: 2rem;
-    line-height: 1; color: var(--navy); letter-spacing: -0.02em;
-  }
-  .kpi .sub { font-size: 12.5px; color: var(--text-muted); margin-top: 6px; }
-  .kpi.feature {
-    background: linear-gradient(160deg, #001f52 0%, #0c2d6b 100%);
-    border-color: transparent;
-    print-color-adjust: exact; -webkit-print-color-adjust: exact;
-  }
-  .kpi.feature .cap { color: var(--sky); }
-  .kpi.feature .val { color: #fff; }
-  .kpi.feature .sub { color: #b4c6e0; }
-
-  /* ---------- Context callout ---------- */
-  .callout {
-    display: flex; gap: 16px; border: 1px solid var(--border);
-    border-left: 4px solid var(--brand-blue); background: var(--surface-cool);
-    border-radius: 12px; padding: 18px 20px; margin-top: 4px;
-  }
-  .callout .dot {
-    flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%;
-    background: var(--brand-blue); color: #fff; display: grid; place-items: center;
-    font-weight: 800; font-size: 15px;
-    print-color-adjust: exact; -webkit-print-color-adjust: exact;
-  }
-  .callout p { margin: 0; font-size: 14px; color: var(--text-body); }
-  .callout b { color: var(--heading-navy); }
-
-  /* ---------- Table ---------- */
-  .tablewrap { overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  thead th {
-    text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.6px;
-    text-transform: uppercase; color: var(--text-muted); padding: 0 14px 10px;
-    border-bottom: 2px solid var(--border);
-  }
-  thead th.num, tbody td.num { text-align: right; font-variant-numeric: tabular-nums; }
-  tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border-subtle); color: var(--text-body); }
-  tbody tr:last-child td { border-bottom: none; }
-  tbody td.term { font-weight: 600; color: var(--heading-navy); }
-  .tag {
-    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.3px;
-    padding: 3px 9px; border-radius: 999px;
-  }
-  .tag.order { background: rgba(46,125,50,0.12); color: var(--good); }
-  .tag.brand { background: var(--surface-cool); color: var(--brand-blue); }
-  .tag.broad { background: rgba(180,83,9,0.10); color: var(--warn); }
-  .legend { margin-top: 14px; font-size: 12.5px; color: var(--text-muted); }
-
-  /* ---------- Plan ---------- */
-  .plan { display: flex; flex-direction: column; gap: 12px; }
-  .step {
-    display: flex; gap: 16px; border: 1px solid var(--border); border-radius: 14px;
-    padding: 18px 20px; background: var(--surface); break-inside: avoid;
-  }
-  .step .n {
-    flex: 0 0 auto; width: 34px; height: 34px; border-radius: 10px;
-    background: linear-gradient(135deg, var(--brand-blue), var(--accent-blue));
-    color: #fff; font-family: var(--font-head); font-weight: 800; font-size: 15px;
-    display: grid; place-items: center;
-    print-color-adjust: exact; -webkit-print-color-adjust: exact;
-  }
-  .step h3 {
-    font-family: var(--font-head); font-size: 1.02rem; font-weight: 700;
-    color: var(--heading-navy); margin: 2px 0 5px;
-  }
-  .step p { margin: 0; font-size: 13.5px; color: var(--text-muted); max-width: none; }
-  .step .prio {
-    margin-left: auto; flex: 0 0 auto; align-self: flex-start; font-size: 10px;
-    font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;
-    padding: 4px 9px; border-radius: 999px; white-space: nowrap;
-  }
-  .prio.high { background: var(--navy); color: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .prio.med { background: var(--surface-cool); color: var(--brand-blue); }
-
-  /* ---------- Footer ---------- */
-  footer {
-    background: var(--navy-deep); color: #b4c6e0; padding: 28px 48px 30px;
-    font-size: 12.5px; print-color-adjust: exact; -webkit-print-color-adjust: exact;
-  }
-  footer .frow { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
-  footer .who { color: #fff; font-weight: 600; font-size: 14px; margin-bottom: 2px; }
-  footer a { color: var(--sky); text-decoration: none; }
-  footer .fine {
-    margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08);
-    color: #7ba3d4; font-size: 11.5px; max-width: none;
-  }
-
-  @media (max-width: 720px) {
-    .kpis { grid-template-columns: repeat(2, 1fr); }
-    section, .masthead, footer { padding-left: 26px; padding-right: 26px; }
-    h1 { font-size: 1.9rem; }
-  }
-  @media (max-width: 460px) { .kpis { grid-template-columns: 1fr; } }
-
-  @media print {
-    body { background: #fff; }
-    .page { box-shadow: none; margin: 0; max-width: none; }
-    section { break-inside: avoid; }
-    @page { size: letter; margin: 0.5in; }
-  }
+  :root { --navy:#001f52; --blue:#1B51A4; --ink:#0e1726; --muted:#5b6572;
+           --line:#e6e9ef; --bg:#f5f7fb; --card:#fff; }
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);line-height:1.5;
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  header{background:linear-gradient(135deg,#001f52 0%,#1B51A4 100%);color:#fff;
+          padding:38px 24px 52px;text-align:center}
+  .brand{font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+          opacity:.75;font-weight:600;margin:0 0 14px}
+  header h1{margin:0;font-size:28px;font-weight:700;letter-spacing:-.01em}
+  header p{margin:10px auto 0;max-width:460px;opacity:.82;font-size:15px}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px 64px}
+  .list{margin-top:-26px}
+  a.card{display:flex;align-items:center;gap:18px;background:var(--card);
+          border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:16px 0;
+          text-decoration:none;color:inherit;box-shadow:0 1px 2px rgba(16,23,38,.04);
+          transition:transform .12s ease,box-shadow .12s ease,border-color .12s ease}
+  a.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(16,23,38,.10);border-color:#cdd6e6}
+  a.card:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+  .badge{flex:0 0 auto;width:46px;height:46px;border-radius:11px;
+          background:linear-gradient(135deg,#001f52,#1B51A4);color:#fff;display:flex;
+          align-items:center;justify-content:center;font-weight:700;font-size:13px}
+  .body{flex:1 1 auto;min-width:0}
+  .name{font-weight:700;font-size:16px;margin:0}
+  .meta{color:var(--muted);font-size:13.5px;margin:3px 0 0}
+  .arrow{flex:0 0 auto;color:var(--blue);font-size:20px;font-weight:700}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:36px;
+          padding-top:22px;border-top:1px solid var(--line)}
+  footer b{color:var(--navy)}
 </style>
 </head>
 <body>
-
-<div class="page">
-  <header class="masthead">
-    <div class="glow a"></div>
-    <div class="glow b"></div>
-    <div class="brandrow">
-      <div class="logochip">
-        <img src="data:image/jpeg;base64,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" alt="Rocco's Italian Kitchen logo" />
-      </div>
-      <div class="preparedby">
-        <div class="lbl">Prepared by</div>
-        <div class="cw">chowly<span>.</span></div>
-      </div>
-    </div>
-    <p class="eyebrow">Google Search Ads · Performance Review</p>
-    <h1>Your paid search results</h1>
-    <div class="meta">
-      <span><b>3561 53rd Ave W</b>, Bradenton, FL</span>
-      <span>Reporting period: <b>Jun 24 – Jul 24, 2026</b> (last 30 days)</span>
-      <span>Campaign live since <b>Apr 17, 2026</b></span>
-    </div>
+  <header>
+    <p class="brand">chowly</p>
+    <h1>Rocco&#x27;s Italian Kitchen</h1>
+    <p>Google Search Ads performance reports, most recent first.</p>
   </header>
-
-  <section>
-    <p class="sec-label">The month at a glance</p>
-    <h2>What your ad budget did</h2>
-    <div class="kpis">
-      <div class="kpi">
-        <div class="cap">Ad spend</div>
-        <div class="val">$150.30</div>
-        <div class="sub">$5.00 / day — fully invested</div>
-      </div>
-      <div class="kpi">
-        <div class="cap">Times shown</div>
-        <div class="val">8,653</div>
-        <div class="sub">Impressions on Google</div>
-      </div>
-      <div class="kpi">
-        <div class="cap">Site visits</div>
-        <div class="val">576</div>
-        <div class="sub">Clicks · $0.26 avg. per click</div>
-      </div>
-      <div class="kpi feature">
-        <div class="cap">Online orders</div>
-        <div class="val">2</div>
-        <div class="sub">$117.75 in tracked sales</div>
-      </div>
-      <div class="kpi feature">
-        <div class="cap">Phone calls</div>
-        <div class="val">9</div>
-        <div class="sub">Calls placed straight from your ad</div>
-      </div>
-      <div class="kpi">
-        <div class="cap">Click rate</div>
-        <div class="val">6.66%</div>
-        <div class="sub">Well above the norm for search</div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <p class="sec-label">Reading the numbers</p>
-    <h2>Where things stand</h2>
-    <div class="callout">
-      <div class="dot">i</div>
-      <p>Your ad is working hard — a <b>6.66% click rate</b> is strong, and it's driving real customer action: <b>2 online orders plus 9 phone calls</b> this month (calls matter a lot for reservations, catering, and takeout). The main thing holding you back is <b>ad rank</b>: you're only appearing on about a third of the relevant searches in Bradenton, missing the rest to higher-ranked competitor ads. The plan below is built to raise your ad's standing and point every dollar at ready-to-order customers.</p>
-    </div>
-  </section>
-
-  <section>
-    <p class="sec-label">Customer demand</p>
-    <h2>How people are finding you</h2>
-    <p>These are the real searches that brought people to your ad this month. The standout: customers are actively looking for <em>Rocco's by name</em> — even when they misspell it as "Ricco's" or "Rico's," they still find you and order.</p>
-    <div class="tablewrap">
-      <table>
-        <thead>
-          <tr>
-            <th>What they searched</th>
-            <th class="num">Visits</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="term">pizza near me</td><td class="num">52</td><td><span class="tag order">Drove an order/call</span></td></tr>
-          <tr><td class="term">roccos italian kitchen bradenton fl</td><td class="num">19</td><td><span class="tag brand">Your brand</span></td></tr>
-          <tr><td class="term">ricos&nbsp;/&nbsp;ricco's&nbsp;/&nbsp;rico's pizza</td><td class="num">33</td><td><span class="tag order">Brand (drove orders)</span></td></tr>
-          <tr><td class="term">rocco's bradenton</td><td class="num">14</td><td><span class="tag order">Brand (drove a call)</span></td></tr>
-          <tr><td class="term">italian restaurant near me</td><td class="num">28</td><td><span class="tag broad">Broad search</span></td></tr>
-          <tr><td class="term">roccos</td><td class="num">18</td><td><span class="tag brand">Your brand</span></td></tr>
-          <tr><td class="term">italian restaurants near me</td><td class="num">15</td><td><span class="tag broad">Broad search</span></td></tr>
-          <tr><td class="term">dominos (and variants)</td><td class="num">11</td><td><span class="tag broad">Competitor</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="legend"><b>Brand</b> = people looking for you by name (including misspellings) · <b>Order/call</b> = search that produced a conversion · <b>Broad / Competitor</b> = wide or off-target searches we're now refining so your budget focuses on ready-to-order customers.</p>
-  </section>
-
-  <section>
-    <p class="sec-label">What happens next</p>
-    <h2>Our optimization plan</h2>
-    <p>Here's what the Chowly team is doing to lift your results over the coming weeks, in priority order.</p>
-    <div class="plan">
-      <div class="step">
-        <div class="n">1</div>
-        <div>
-          <h3>Raise your ad's rank on the terms that matter</h3>
-          <p>You're missing roughly two-thirds of local searches to higher-ranked ads. By tightening keywords and adding the extensions below, we improve your ad's quality and standing — capturing more of the demand you're already competing for, at the same budget.</p>
+  <div class="wrap">
+    <div class="list">
+      <a class="card" href="./gsa-report-2026-07-24/">
+        <div class="badge">GSA</div>
+        <div class="body">
+          <p class="name">Google Search Ads &mdash; Performance Review</p>
+          <p class="meta">Reporting period Jun 24 – Jul 24, 2026 &middot; run 2026-07-24</p>
         </div>
-        <span class="prio high">High priority</span>
-      </div>
-      <div class="step">
-        <div class="n">2</div>
-        <div>
-          <h3>Cut wasted spend</h3>
-          <p>Add exclusions so your budget stops paying for competitor searches (like "Domino's") and off-target terms. More of every dollar goes to customers near you who are ready to order.</p>
-        </div>
-        <span class="prio high">High priority</span>
-      </div>
-      <div class="step">
-        <div class="n">3</div>
-        <div>
-          <h3>Own your name — misspellings included</h3>
-          <p>Lots of people search "Rocco's" (and "Ricco's," "Rico's"). We'll make sure every spelling reliably lands on your ad and menu, so you never lose a customer who's already looking for you.</p>
-        </div>
-        <span class="prio high">High priority</span>
-      </div>
-      <div class="step">
-        <div class="n">4</div>
-        <div>
-          <h3>Add ad extensions</h3>
-          <p>Attach quick links and highlights (Order Online, Menu, Reservations, Hours) to make your ad larger and more clickable — which also lifts your rank at no extra cost per click.</p>
-        </div>
-        <span class="prio med">Medium</span>
-      </div>
-      <div class="step">
-        <div class="n">5</div>
-        <div>
-          <h3>Sharpen order tracking</h3>
-          <p>Tune the campaign so Google optimizes toward completed online orders and calls — the actions that reflect your real return — rather than lighter actions like page views.</p>
-        </div>
-        <span class="prio med">Medium</span>
-      </div>
+        <div class="arrow">&rarr;</div>
+      </a>
     </div>
-  </section>
-
-  <footer>
-    <div class="frow">
-      <div>
-        <div class="who">Jesse Gorin</div>
-        <div>Customer Success Manager, Chowly</div>
-        <div><a href="mailto:jgorin@chowlyinc.com">jgorin@chowlyinc.com</a></div>
-      </div>
-      <div style="text-align:right;">
-        <div>Report generated Jul 24, 2026</div>
-        <div>Source: Google Search Ads · last 30 days</div>
-      </div>
-    </div>
-    <p class="fine">Sales figures reflect online orders placed through Chowly Online Ordering and attributed to Google Search Ads; phone calls are tracked directly from the ad. Some customer value from calls (reservations, catering, dine-in) is not captured in online-order revenue. Figures are expected to improve as the optimizations above take effect.</p>
-  </footer>
-</div>
-
+    <footer>Prepared by <b>Chowly</b> &middot; chowly.com</footer>
+  </div>
 </body>
 </html>
